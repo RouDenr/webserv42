@@ -30,4 +30,7 @@
 *.exe
 *.out
 *.app
-test
+*test*
+/src/test_poll_serv.cpp
+/src/test_serv.cpp
+.idea
