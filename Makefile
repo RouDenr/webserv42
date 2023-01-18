@@ -13,7 +13,7 @@ NAME_EXT	= 	${NAME}${EXT}
 S		=	src
 O		=	obj
 
-SRCS		=	main.cpp Socket.cpp
+SRCS		=	main.cpp Socket.cpp Server.cpp
 # SRCS_std	=	main_orig.cpp
 
 SRCS	:=	$(foreach file,$(SRCS),$S/$(file))

@@ -16,6 +16,8 @@ class Socket {
 
     void bind(addrinfo *server_info);
     void listen(int backlog);
+
+    int getFd() const { return this->fd; }
 };
 
 

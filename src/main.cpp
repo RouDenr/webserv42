@@ -3,7 +3,7 @@
 #include "../inc/webserv.hpp"
 
 void fullServInfo(addrinfo **serv_info, const char *conf_file) {
-    (void) conf_file;
+    (void)conf_file;
     addrinfo hints;
 
     std::memset(&hints, 0, sizeof hints);
@@ -16,18 +16,25 @@ void fullServInfo(addrinfo **serv_info, const char *conf_file) {
     }
 }
 
-int polling_server(const Socket &socket) {
-    int nfds = 1;
-    int rc = 0;
-    pollfd fds[200];
+int polling_server(const Socket &listen_socket) {
+    Server main_server(listen_socket);
+
+    try {
+        do {
+        } while (!main_server.end());
+
+    } catch (const std::system_error &err) {
+        std::cerr << "server: " << err.what();
+        return err.code().value();
+    }
+    return 0;
 }
 
 int main(int argc, char **argv) {
     Socket socket;
     addrinfo *serv_info;
 
-    if (argc != 2)
-        return 1;
+    if (argc != 2 && false) return 1;
 
     try {
         fullServInfo(&serv_info, argv[1]);

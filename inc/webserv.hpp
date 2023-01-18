@@ -22,6 +22,7 @@
 #include <iostream>
 #include <string>
 #include "Socket.hpp"
+#include "Server.hpp"
 
 #define PORT "80"
 #define SIZE_RECV_DATA 100
