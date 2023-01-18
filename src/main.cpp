@@ -2,7 +2,8 @@
 
 #include "../inc/webserv.hpp"
 
-void fullServInfo(addrinfo **serv_info) {
+void fullServInfo(addrinfo **serv_info, const char *conf_file) {
+    (void) conf_file;
     addrinfo hints;
 
     std::memset(&hints, 0, sizeof hints);
@@ -15,17 +16,21 @@ void fullServInfo(addrinfo **serv_info) {
     }
 }
 
+int polling_server(const Socket &socket) {
+    int nfds = 1;
+    int rc = 0;
+    pollfd fds[200];
+}
 
-
-int main() {
-    int error = 0;
-//    sigaction_t sa;
-
+int main(int argc, char **argv) {
     Socket socket;
     addrinfo *serv_info;
 
+    if (argc != 2)
+        return 1;
+
     try {
-        fullServInfo(&serv_info);
+        fullServInfo(&serv_info, argv[1]);
         socket.bind(serv_info);
         freeaddrinfo(serv_info);
         socket.listen(BACKLOG);
@@ -35,9 +40,6 @@ int main() {
         return err.code().value();
     }
     std::cout << "server: waiting for connection..." << std::endl;
-//    do {
-//
-//    } while (true);
 
-    return error;
+    return polling_server(socket);
 }
