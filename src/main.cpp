@@ -33,6 +33,7 @@ int polling_server(const Socket &listen_socket) {
 int main(int argc, char **argv) {
     Socket socket;
     addrinfo *serv_info;
+    Logger::setFile(__LOG_FILE__);
 
     if (argc != 2 && false) return 1;
 

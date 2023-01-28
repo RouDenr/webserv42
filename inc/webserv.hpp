@@ -23,11 +23,14 @@
 #include <string>
 #include "Socket.hpp"
 #include "Server.hpp"
+#include "Logger.hpp"
 
 #define PORT "80"
 #define SIZE_RECV_DATA 100
 #define SIZE_SEND_DATA 100
 #define BACKLOG 10
+
+#define __LOG_FILE__ "webserv.log"
 
 typedef struct sigaction sigaction_t;
 
