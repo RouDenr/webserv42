@@ -42,6 +42,7 @@ namespace webserv {
 
 void do_log_mess(const std::string &mess);
 void do_err_mess(const std::string &mess);
+void throw_system_err();
 }  // namespace webserv
 
 #endif
