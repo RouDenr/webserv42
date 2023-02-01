@@ -21,10 +21,16 @@ int polling_server(const Socket &listen_socket) {
 
     try {
         do {
+            main_server.pool();
+
+            nfds_t current_size = main_server.get_nfds();
+
+            
+
         } while (!main_server.end());
 
     } catch (const std::system_error &err) {
-        std::cerr << "server: " << err.what();
+        webserv::do_err_mess(err.what());
         return err.code().value();
     }
     return 0;
@@ -43,11 +49,11 @@ int main(int argc, char **argv) {
         freeaddrinfo(serv_info);
         socket.listen(BACKLOG);
     } catch (const std::system_error &err) {
-        std::cerr << "server: " << err.what();
+        webserv::do_err_mess(err.what());
         freeaddrinfo(serv_info);
         return err.code().value();
     }
-    std::cout << "server: waiting for connection..." << std::endl;
+    webserv::do_log_mess("server: waiting for connection...");
 
     return polling_server(socket);
 }

@@ -1,6 +1,7 @@
 // copyright by decordel 2023
 
 #include "../inc/Server.hpp"
+#include "Server.hpp"
 
 Server::Server(const Socket &new_socket) : _socket(new_socket), _end(false) {
     ::memset(this->fds, 0, sizeof this->fds);
@@ -10,6 +11,15 @@ Server::Server(const Socket &new_socket) : _socket(new_socket), _end(false) {
 
     this->timeout = __SERV_TIMEOUT__;
 
+}
+
+void Server::pool() {
+    webserv::do_log_mess("poll waiting...");
+    int rv = ::poll(this->fds, this->nfds, this->timeout);
+
+    if (rv <= 0) {
+        webserv::throw_system_err();
+    }
 }
 
 Server::~Server() {

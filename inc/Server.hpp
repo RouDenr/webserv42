@@ -13,7 +13,7 @@ class Server {
     const Socket &_socket;
 
     pollfd fds[200];
-    int nfds;
+    nfds_t nfds;
     int timeout;
 
     bool _end;
@@ -22,7 +22,10 @@ class Server {
     explicit Server(const Socket &new_socket);
     Server(const Server &) = default;
 
+    void pool();
+
     bool end() const { return _end; }
+    const nfds_t get_nfds() const { return this->nfds; }
 
     ~Server();
 };
