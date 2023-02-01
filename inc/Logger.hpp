@@ -4,9 +4,9 @@
 #ifndef __LOGGER_HPP__
 #define __LOGGER_HPP__
 
+#include <ctime>
 #include <fstream>
 #include <string>
-#include <ctime>
 
 #include "webserv.hpp"
 
@@ -19,8 +19,6 @@ class Logger {
     explicit Logger(const std::string &file_name);
 
  public:
-
-
     class LoggerNotInitException : public std::exception {
      public:
         virtual const char *what() const throw();
@@ -31,9 +29,10 @@ class Logger {
     ~Logger();
 
     // Запись сообщения message в файл.
-    void writeLog(std::string message);
+    void Logger::writeLog(const std::string &prefix,
+                          const std::string &message);
 };
 
-Logger* Logger::logger = 0;
+Logger *Logger::logger = 0;
 
 #endif  // __LOGGER_HPP__

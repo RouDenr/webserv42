@@ -6,14 +6,12 @@ const char *Logger::LoggerNotInitException::what() const throw() {
     return "logger not init";
 }
 
-Logger::Logger(const std::string& file_name) {
+Logger::Logger(const std::string &file_name) {
     this->file_name = file_name;
     this->log_file.open(file_name, std::ios::app);
 }
 
-Logger::~Logger() {
-    log_file.close();
-}
+Logger::~Logger() { log_file.close(); }
 
 void Logger::setFile(const std::string &file_name) {
     if (!logger) {
@@ -32,13 +30,13 @@ Logger *Logger::getLogger() {
     return logger;
 }
 
-void Logger::writeLog(std::string message) {
+void Logger::writeLog(const std::string &prefix, const std::string &message) {
     time_t rawtime;
-    tm* timeinfo;
+    tm *timeinfo;
     time(&rawtime);
     timeinfo = ::localtime_r(&rawtime, timeinfo);
     char buffer[80];
     ::strftime(buffer, 80, "%d-%m-%Y %I:%M:%S", timeinfo);
     std::string str(buffer);
-    this->log_file << ": " << str << " : " << message << std::endl;
+    this->log_file << prefix << ": " << str << " : " << message << std::endl;
 }

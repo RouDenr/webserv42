@@ -6,11 +6,11 @@
 #define WEBSERV_HPP
 
 #include <netdb.h>
+#include <poll.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include <poll.h>
 
 //   #include <arpa/inet.h>
 //   #include <netinet/in.h>
@@ -21,9 +21,12 @@
 #include <exception>
 #include <iostream>
 #include <string>
-#include "Socket.hpp"
-#include "Server.hpp"
+
 #include "Logger.hpp"
+#include "Request.hpp"
+#include "Response.hpp"
+#include "Server.hpp"
+#include "Socket.hpp"
 
 #define PORT "80"
 #define SIZE_RECV_DATA 100
@@ -34,5 +37,11 @@
 
 typedef struct sigaction sigaction_t;
 
+// * UTILS
+namespace webserv {
+
+void do_log_mess(const std::string &mess);
+void do_err_mess(const std::string &mess);
+}  // namespace webserv
 
 #endif
