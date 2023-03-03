@@ -10,11 +10,12 @@
 class Request {
  public:
     Request();
+    Request(const char *c_str, size_t size);
 
     virtual const char *getBody() = 0;
     virtual const char *getHead() = 0;
 
-    ~Request();
+    virtual ~Request() = 0;
 };
 
 #endif  // __REQUEST_HPP__

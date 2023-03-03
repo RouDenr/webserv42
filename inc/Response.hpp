@@ -7,9 +7,11 @@
 #include "webserv.hpp"
 
 
+
 class Response {
  public:
     Response();
+    //explicit Response(Request *request);
 
     virtual const char *getBody() = 0;
     virtual const char *getHead() = 0;
