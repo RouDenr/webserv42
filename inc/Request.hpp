@@ -1,4 +1,4 @@
-// copyright by decordel 2023
+// copyright (c) 2023 by Dennet Cordelia
 
 #pragma once
 #ifndef __REQUEST_HPP__
@@ -10,10 +10,8 @@
 class Request {
  public:
     Request();
-    Request(const char *c_str, size_t size);
 
-    virtual const char *getBody() = 0;
-    virtual const char *getHead() = 0;
+    virtual void parse(const char *request) = 0;
 
     virtual ~Request() = 0;
 };

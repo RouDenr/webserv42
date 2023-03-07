@@ -1,4 +1,4 @@
-// copyright by decordel 2023
+// copyright (c) 2023 by Dennet Cordelia
 
 #pragma once
 #ifndef __RESPONSE_HPP__
@@ -11,12 +11,10 @@
 class Response {
  public:
     Response();
-    //explicit Response(Request *request);
 
-    virtual const char *getBody() = 0;
-    virtual const char *getHead() = 0;
+    virtual const char *to_string() = 0;
 
-    ~Response();
+    virtual ~Response() = 0;
 };
 
 #endif  // __RESPONSE_HPP__

@@ -1,5 +1,4 @@
-// copyright by decordel 2023
-
+// copyright (c) 2023 by Dennet Cordelia
 #include "../inc/webserv.hpp"
 
 void do_log_mess(const std::string &mess) {

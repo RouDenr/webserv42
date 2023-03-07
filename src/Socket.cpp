@@ -1,6 +1,4 @@
-//
-// Created by Dennet Cordelia on 15.01.2023.
-//
+// copyright (c) 2023 by Dennet Cordelia
 
 #include "../inc/Socket.hpp"
 

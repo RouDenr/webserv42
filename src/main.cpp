@@ -1,4 +1,4 @@
-// copyright by decordel 2023
+// copyright (c) 2023 by Dennet Cordelia
 
 #include "../inc/webserv.hpp"
 
@@ -25,7 +25,7 @@ int polling_server(const Socket &listen_socket) {
 
             nfds_t current_size = main_server.get_nfds();
 
-            
+
 
         } while (!main_server.end());
 

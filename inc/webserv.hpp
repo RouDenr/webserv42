@@ -1,4 +1,4 @@
-// copyright by decordel 2023
+// copyright (c) 2023 by Dennet Cordelia
 
 #pragma once
 
